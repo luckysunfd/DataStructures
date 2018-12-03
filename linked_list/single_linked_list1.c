@@ -19,7 +19,7 @@ LinkedListNodePtr create_node(int data){
         }
         return node;
 }
-
+//尾插法
 LinkedListNodePtr create_linked(int num){
         LinkedListNodePtr head, node, tails;
         for(int i = 0; i < num; i++){
@@ -41,6 +41,7 @@ void visit_linked(LinkedListNodePtr head){
                 visit_linked(head->next);
         }
 }
+
 
 
 

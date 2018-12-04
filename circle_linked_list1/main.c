@@ -38,5 +38,18 @@ int main(void){
         alter_node(list1, 10, 101010);
         visit(list1);
 
+        puts("删除链表头节点1");
+        del_node(list1, 1);
+        visit(list1);
+        printf("length: %d\n", get_length(list1));
+
+        puts("正在删除尾节点9");
+        del_node(list1, 9);
+        visit(list1);
+
+        puts("删除链表位置5");
+        del_node(list1, 5);
+        visit(list1);
+
         return 0;
 }

@@ -1,4 +1,4 @@
-target_app = sll
+target_app = bin/sll
 cc = gcc
 flags = -std=c99 -Wall -v
 deps = single_linked_list1.c

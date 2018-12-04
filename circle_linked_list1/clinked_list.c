@@ -122,4 +122,29 @@ bool is_empty(cLinkedListPtr clinked_list){
 
 void del_node(cLinkedListPtr clinked_list, int position){
         //todo
+        if(position > get_length(clinked_list)){
+                puts("位置非法！传入的位置大于链表的实际长度");
+        }else{
+                cLinkedListNodePtr temp = clinked_list->head;
+                if(position == 1){
+                        temp = clinked_list->head->next;
+                        free(clinked_list->head);
+                        clinked_list->head = temp;
+                        clinked_list->tails = clinked_list->head;
+                        clinked_list->length--;
+                }else{
+                        int previous_num = 1;
+                        cLinkedListNodePtr want_to_del = NULL;
+
+                        while(previous_num != position - 1){
+                                temp = temp->next;
+                                previous_num++;
+                        }
+
+                        want_to_del = temp->next;
+                        temp->next = want_to_del->next;
+                        free(want_to_del);
+                        clinked_list->length--;
+                }
+        }
 }

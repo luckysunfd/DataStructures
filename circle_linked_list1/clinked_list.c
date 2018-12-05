@@ -1,5 +1,5 @@
 /**
- * @author      : sun (lingganyang@gmail.com)
+ * @author      : sun 
  * @file        : clinked_list
  * @created     : Monday Dec 03, 2018 22:05:31 CST
  */

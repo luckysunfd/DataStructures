@@ -117,9 +117,42 @@ DLinkedListNodePtr find_node(DLinkedListPtr dlinked, DataType fdata){
 }
 
 //删除节点,传入一个链表位置，然后删除它
-void del_node(DLinkedListPtr dlinked, int position);
+void del_node(DLinkedListPtr dlinked, int position){
+        if(is_empty(dlinked) || position < 1 || position > get_length(dlinked)){
+                puts("Illegal position");
+                return ;
+        }else{
+                int previous_num = 1;
+                DLinkedListNodePtr current = dlinked->head;
+                DLinkedListNodePtr want_del = NULL;
+                
+                while(previous_num != position - 1){
+                        previous_num++;
+                        current = current->next;
+                }
+
+                want_del = current->next;
+                current->next = want_del->next;
+                free(want_del);
+                dlinked->length--;
+        }
+}
+
 //修改节点
-void alter_node(DLinkedListPtr dlinked, int position, DataType data);
+void alter_node(DLinkedListPtr dlinked, int position, DataType data){
+        if(is_empty(dlinked) || position > get_length(dlinked) || position < 1){
+                puts("Illegal position");
+                return ;
+        }else{
+                int num = 1;
+                DLinkedListNodePtr current = dlinked->head;
+                while(num != position){
+                        current = current->next;
+                        num++;
+                }
+                current->data = data;
+        }
+}
 //求链表长度
 int get_length(DLinkedListPtr dlinked){
         if(is_empty(dlinked)){
@@ -128,8 +161,7 @@ int get_length(DLinkedListPtr dlinked){
                 return dlinked->length;
         }
 }
-//插入节点，根据传入的位置参数插入
-void insert_node2_n(DLinkedListPtr dlinked, int position, DataType data);
+
 //判空
 bool is_empty(DLinkedListPtr dlinked){
         if(dlinked == NULL){

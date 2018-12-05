@@ -32,6 +32,14 @@ int main(void){
         puts("found 1010");
         find_node(dlinked, 1010);
 
+        puts("alter node 2 to 2222");
+        alter_node(dlinked, 2, 2222);
+        visit_l(dlinked);
+
+        puts("del node 2");
+        del_node(dlinked, 2);
+        visit_l(dlinked);
+
         puts("销毁链表");
         destroy_dlinked(dlinked);
         printf("销毁完之后尝试读一下头节点，输出下地址看看，head %p  tails %p\n", dlinked->head, dlinked->tails);

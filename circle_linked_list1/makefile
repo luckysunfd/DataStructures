@@ -1,4 +1,4 @@
-target_app = demo
+target_app = bin/demo
 cc = gcc
 flags = -std=c99 -Wall -v
 deps = clinked_list.h

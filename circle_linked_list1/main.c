@@ -31,6 +31,8 @@ int main(void){
         if(find_node(list1, 9) != NULL){
                 printf("%d\n", find_node(list1, 9)->data);
         }
+        puts("find 999");
+        find_node(list1, 999);
 
         puts("修改位置为5的节点数据为55555,1 ,11111,10,101010");
         alter_node(list1, 5, 55555);

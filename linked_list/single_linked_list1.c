@@ -45,6 +45,8 @@ void visit_linked(LinkedListNodePtr head){
 
 
 
+
+
 int main(void){
         LinkedListNodePtr head = create_linked(10);
         visit_linked(head);

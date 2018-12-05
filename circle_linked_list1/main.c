@@ -31,6 +31,7 @@ int main(void){
         if(find_node(list1, 9) != NULL){
                 printf("%d\n", find_node(list1, 9)->data);
         }
+
         puts("find 999");
         find_node(list1, 999);
 
@@ -52,6 +53,9 @@ int main(void){
         puts("删除链表位置5");
         del_node(list1, 5);
         visit(list1);
+
+        puts("find 999");
+        find_node(list1, 999);
 
         return 0;
 }

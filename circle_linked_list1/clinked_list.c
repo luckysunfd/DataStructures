@@ -83,8 +83,9 @@ cLinkedListNodePtr find_node(cLinkedListPtr clinked_list, DataType fdata){
         cLinkedListNodePtr current = clinked_list->head;
         int num = clinked_list->length - 1;
 
-        while(current->data != fdata && current->next != NULL){
+        while(current->data != fdata && num != 0){
                 current = current->next;
+                num--;
         }
 
         if(current->data == fdata){

@@ -7,8 +7,8 @@ objs = main.o clinked_list.o
 $(target_app): $(objs)
 	$(cc) -o $(target_app) $(objs) $(flags)
 
-main.o: $(deps) main.c
+main.o: main.c $(deps)
 	$(cc) -c main.c $(deps)
 
-clinked_list.o: $(deps) clinked_list.c
+clinked_list.o:  clinked_list.c $(deps)
 	$(cc) -c clinked_list.c $(deps)

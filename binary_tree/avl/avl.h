@@ -41,3 +41,4 @@ ptr_avl Del_Node(ptr_avl avl, ElemType data);
 
 void In_Traversal(ptr_avl avl);
 
+unsigned int Count_Node(ptr_avl avl);

@@ -192,3 +192,12 @@ void In_Traversal(ptr_avl avl) {
         In_Traversal(avl->right);
     }
 }
+
+
+unsigned int Count_Node(ptr_avl avl) {
+    if( avl != NULL ) {
+        return Count_Node(avl->left) + Count_Node(avl->right) + 1;
+    }else{
+        return 0;
+    }
+}

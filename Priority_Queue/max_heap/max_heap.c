@@ -62,7 +62,7 @@ ElemType Dequeue(ptr_max_heap pq1) {
     return max_v;
 }
 
-ptr_max_heap Create_1(ElemType *num);
+ptr_max_heap Create_1(ElemType *num, unsigned int num_size);
 
 void Destroy(ptr_max_heap pq1) {
     if( pq1 != NULL ) {

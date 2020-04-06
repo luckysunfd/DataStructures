@@ -27,6 +27,6 @@ void Enqueue(ptr_max_heap pq1, ElemType data);
 
 ElemType Dequeue(ptr_max_heap pq1);
 
-ptr_max_heap Create_1(ElemType *num);
+ptr_max_heap Create_1(ElemType *num, unsigned int num_size);
 
 void Destroy(ptr_max_heap pq1);

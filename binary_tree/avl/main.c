@@ -18,7 +18,23 @@ int main(void) {
     }
 
     puts("In traversal");
+    avl = Insert_Node(avl, 99);
     In_Traversal(avl);
+
+    avl = Del_Node(avl, 99);
+    In_Traversal(avl);
+
+    puts("-----------------");
+    printf("\ncount node: %d\n", Count_Node(avl));
+    a = rand_rr(30, 1200);
+    for( int i = 0; i < 3000; i++ ) {
+        avl = Del_Node(avl, a);
+        a = rand_rr(10, 1500);
+    }
+    In_Traversal(avl);
+    printf("\ncount node: %d\n", Count_Node(avl));
+
+    puts("----------------");
 
     return 0;
 }

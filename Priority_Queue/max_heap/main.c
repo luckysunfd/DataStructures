@@ -30,5 +30,23 @@ int main(void) {
 
     puts("\n");
 
+    ElemType num[MAX_HEAP_SIZE];
+
+    for( int i = 0; i < MAX_HEAP_SIZE; i++) {
+        num[i] = a;
+        a = rand_rr(30 ,5000);
+    }
+
+    ptr_max_heap pq2 = Create_1(num, MAX_HEAP_SIZE);
+
+    printf("cur_size %d\n", pq2->cur_size);
+    for( int i = 0; i < MAX_HEAP_SIZE; i++) {
+        printf("%d -> ", Dequeue(pq2));
+    }
+    puts("\n");
+    printf("cur_size %d\n", pq2->cur_size);
+
+
+
     return 0;
 }

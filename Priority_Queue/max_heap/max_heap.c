@@ -62,7 +62,41 @@ ElemType Dequeue(ptr_max_heap pq1) {
     return max_v;
 }
 
-ptr_max_heap Create_1(ElemType *num, unsigned int num_size);
+ptr_max_heap Create_1(ElemType *num, unsigned int num_size) {
+    ptr_max_heap pq2 = Init_1();
+
+    for(int i = 0; i < num_size; i++) {
+        if( Full_1(pq2) ) {
+            break;
+        }
+        pq2->items[i+1] = num[i];
+        pq2->cur_size++;
+    }
+
+    int j;
+    int par;
+    int children;
+    ElemType temp;
+
+    for( j = pq2->cur_size/2; j >= 1; j--) {
+        par = j;
+        temp = pq2->items[j];
+
+        while( 2 * par <= pq2->cur_size ) {
+            children = 2 * par;
+            if( children != pq2->cur_size && pq2->items[children] < pq2->items[children+1] ) {
+                children++;
+            }
+            if( temp > pq2->items[children] )
+                break;
+            pq2->items[par] = pq2->items[children];
+            par = children;
+        }
+        pq2->items[par] = temp;
+    }
+
+    return pq2;
+}
 
 void Destroy(ptr_max_heap pq1) {
     if( pq1 != NULL ) {

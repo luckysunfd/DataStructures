@@ -125,7 +125,65 @@ ptr_avl Insert_Node(ptr_avl avl, ElemType data) {
     return avl;
 }
 
-ptr_avl Del_Node(ptr_avl avl, ElemType data);
+ptr_avl Del_Node(ptr_avl avl, ElemType data) {
+    if( avl == NULL ) {
+        return NULL;
+    }
+
+    if( data < avl->data ) {
+        avl->left = Del_Node(avl->left, data);
+    }else if( data > avl->data ) {
+        avl->right = Del_Node(avl->right, data);
+    }else{
+        /* same as val */
+        ptr_avl temp = NULL;
+
+        // only left child
+        if( avl->right == NULL ) {
+            temp = avl->left;
+            free(avl);
+            return temp;
+        }else if( avl->left == NULL ) {
+            temp = avl->right;
+            free(avl);
+            return temp;
+        }else{
+            temp = Get_Min_Node(avl->right);
+            avl->data = temp->data;
+            avl->right = Del_Node(avl->right, temp->data);
+        }
+        return avl;
+    }
+
+    if( avl == NULL )
+        return avl;
+
+    // Updating height
+    Set_Height(avl);
+
+    // get balanced factor
+    int bf = Get_BF(avl);
+    // 不平衡？ 平衡下再平衡
+    if( bf > 1 && Get_BF(avl->left) >= 0 ) {
+        // left-left, need right-rotation
+        return  Right_Rotation(avl);
+    }
+    if( bf > 1 && Get_BF(avl->left) < 0 ) {
+        // left-right, need left-right-rotation
+        return Left_Right_Rotation(avl);
+    }
+    if( bf < -1 && Get_BF(avl->right) <=0 ) {
+        // right-right. need left-rotation
+        return Left_Rotation(avl);
+    }
+    if( bf < -1 && Get_BF(avl->right) > 0 ) {
+        // right-left, need right-left rotation
+        return Right_Left_Rotation(avl);
+    }
+
+    // 删除之后依旧平衡，不做处理，直接返回
+    return avl;
+}
 
 void In_Traversal(ptr_avl avl) {
     if( avl != NULL ) {

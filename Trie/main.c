@@ -34,6 +34,10 @@ int main(void) {
         puts("funny1 in the trie");
     }
 
+    int lvl = 0;
+    char word1[60];
+    
+    Show_Content(trie1, lvl, word1);
     
     fclose(fp);
     Destroy(trie1);

@@ -26,6 +26,6 @@ void Insert_Word(ptr_trie trie, const char *str1);
 bool Search_Word(ptr_trie trie, const char *str1);
 
 // show trie content
-void Show_Content(ptr_trie trie);
+void Show_Content(ptr_trie trie, int lvl, char *word1);
 
 void Destroy(ptr_trie trie);

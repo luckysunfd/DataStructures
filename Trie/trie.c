@@ -52,14 +52,14 @@ bool Search_Word(ptr_trie trie, const char *str1) {
 
 // show trie content
 void Show_Content(ptr_trie trie, int lvl, char *word1) {
+    if( trie->isEndOfWord ) {
+        word1[lvl] = '\0';
+        printf("%s\n", word1);
+    }
     for(int i = 0; i < ALPHABET_SIZE; i++) {
         if(trie->items[i] != NULL) {
             word1[lvl] = i + 'a';
             Show_Content(trie->items[i], lvl+1, word1);
-        }
-        if( trie->isEndOfWord ) {
-            word1[lvl] = '\0';
-            printf("%s\n", word1);
         }
     }
 }

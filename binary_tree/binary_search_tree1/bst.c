@@ -51,7 +51,7 @@ ptr_bin_node Insert_Node(ptr_bin_node bst, ElemType data) {
 }
 
 
-ptr_bin_node Find(ptr_bin_node bst, ElemType data) {
+ptr_bin_node Find(ptr_bin_node bst, ElemType data, ptr_bin_node *stack, unsigned int *top, unsigned int *cur_size) {
     /*
     ptr_bin_node stack1[1000] = {NULL};
     unsigned int stack_top = -1;
@@ -66,6 +66,8 @@ ptr_bin_node Find(ptr_bin_node bst, ElemType data) {
         stack1[++stack_top] = bst;
         stack_cur_size++;
         */
+        stack[++(*top)] = bst;
+        (*cur_size)++;
         switch(compare(bst, data)) {
             case 1:
                 return bst;

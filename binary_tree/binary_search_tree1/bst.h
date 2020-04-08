@@ -18,7 +18,7 @@ void Create(bin_node_t **ppbst);
 
 ptr_bin_node Insert_Node(ptr_bin_node bst, ElemType data);
 
-ptr_bin_node Find(ptr_bin_node bst, ElemType data);
+ptr_bin_node Find(ptr_bin_node bst, ElemType data, ptr_bin_node *stack, unsigned int *top, unsigned int *cur_size);
 
 void In_Traversal(ptr_bin_node bst);
 

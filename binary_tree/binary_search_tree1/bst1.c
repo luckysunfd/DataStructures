@@ -48,7 +48,7 @@ void preorder_visit(BinarySearchTreeNodePtr bst){
         }
 }
 
-
+/*
 int main(void){
         BinarySearchTreeNodePtr bst = NULL;
 
@@ -63,3 +63,4 @@ int main(void){
 
         return 0;
 }
+*/

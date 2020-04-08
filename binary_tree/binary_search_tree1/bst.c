@@ -68,6 +68,15 @@ void In_Traversal(ptr_bin_node bst) {
     }
 }
 
+
+/*
+ * 比较传入的节点的值与 要查找的值
+ * 相等 返回 1
+ * 小于 返回 2
+ * 大于 返回 3
+ *
+ *
+ */
 unsigned int compare(ptr_bin_node bst, ElemType data) {
     if( bst->data == data ) {
         return 1;

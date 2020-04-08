@@ -1,6 +1,12 @@
 #include "bst.h"
 
 
+/*
+ptr_bin_node stack1[1000] = {NULL};
+unsigned int stack_top = -1;
+unsigned int stack_cur_size = 0;
+*/
+
 
 ptr_bin_node Get_New_Node(ElemType data) {
     ptr_bin_node new_node = (ptr_bin_node)malloc(sizeof(bin_node_t));
@@ -44,8 +50,22 @@ ptr_bin_node Insert_Node(ptr_bin_node bst, ElemType data) {
     return bst;
 }
 
+
 ptr_bin_node Find(ptr_bin_node bst, ElemType data) {
+    /*
+    ptr_bin_node stack1[1000] = {NULL};
+    unsigned int stack_top = -1;
+    unsigned int stack_cur_size = 0;
+    */
+
+    if( bst == NULL ) 
+       return NULL;
+    
     while( bst ) {
+        /*
+        stack1[++stack_top] = bst;
+        stack_cur_size++;
+        */
         switch(compare(bst, data)) {
             case 1:
                 return bst;

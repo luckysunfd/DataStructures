@@ -1,5 +1,4 @@
 /**
- * @author      : sun (lingganyang@gmail.com)
  * @file        : bst1
  * @created     : Wednesday Dec 05, 2018 23:30:45 CST
  */

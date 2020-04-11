@@ -18,7 +18,7 @@ typedef struct TWO_THREE_NODE {
 
 int Get_Max(ptr_two_three cur_p, ElemType data);
 int Get_Min(ptr_two_three cur_p, ElemType data);
-int Get_Central(ptr_two_three cur_p, ElemType data);
+int Get_Median(ptr_two_three cur_p, ElemType data);
 
 
 unsigned int cmp(ptr_two_three cur, ElemType data);

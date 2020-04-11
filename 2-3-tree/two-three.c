@@ -46,7 +46,7 @@ int Get_Min(ptr_two_three cur_p, ElemType data) {
     return st[0];
 }
 
-int Get_Central(ptr_two_three cur_p, ElemType data) {
+int Get_Median(ptr_two_three cur_p, ElemType data) {
     ElemType st[3];
     st[0] = data;
     st[1] = cur_p->data_l;
@@ -197,7 +197,7 @@ void Merge_In(two_three_node_t **cur_p, ElemType data, ptr_two_three q) {
 */
 void Split(ptr_two_three cur_p, ElemType *ptr_data, two_three_node_t **q) {
     ptr_two_three temp = (*q);  // 保存q的指向的地址
-    ElemType c1 = Get_Central(cur_p, *ptr_data);  // 暂存处于中间位置的值，要合并到父节点
+    ElemType c1 = Get_Median(cur_p, *ptr_data);  // 暂存处于中间位置的值，要合并到父节点
     ElemType a1 = Get_Max(cur_p, *ptr_data);  // max val
     ElemType i1 = Get_Min(cur_p, *ptr_data);  // min val
 

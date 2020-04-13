@@ -32,3 +32,5 @@ void Merge_In(two_three_node_t **cur_p, ElemType data, ptr_two_three q);
 void Split(ptr_two_three cur_p, ElemType *ptr_data, two_three_node_t **q);
 
 void Insert23(two_three_node_t **T, ElemType data);
+
+unsigned int Get_Height(ptr_two_three T);

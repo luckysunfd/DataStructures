@@ -276,3 +276,20 @@ void Insert23(two_three_node_t **T, ElemType data) {
         }
     }
 }
+
+
+/* 
+ *  获取2-3树的高度
+ *
+ *  与普通二叉树 求树的高度不同，因为2-3树是一颗满二叉树，（因为所有叶子都在同一层上）
+ *  所以只需要求以某个节点作为根节点，其左右子树的高度都是相同的
+ *  那么，只需要求出左子树的高度另外再加上树根的高度1就是整棵2-3树的高度
+ *  Get_Height(T->lchild) + 1;
+ *
+ */
+unsigned int Get_Height(ptr_two_three T) {
+    // 用递归求解，注意递归结束条件
+    if( T == NULL )
+        return 0;
+    return Get_Height(T->lchild) + 1;
+}

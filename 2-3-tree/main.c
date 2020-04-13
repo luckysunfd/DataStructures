@@ -37,5 +37,7 @@ int main(void) {
 
     puts("-----------------");
 
+    printf("2-3Tree Height: %d\n", Get_Height(T));
+
     return 0;
 }

@@ -48,7 +48,12 @@ int main(void) {
         printf("%d->", stack[i]->data);
     }
     puts("\n");
+    
+    In_Traversal(T);
+    puts("删除节点40");
+    T = Del_Node(T, 40);
 
+    In_Traversal(T);
 
     return 0;
 }

@@ -23,3 +23,7 @@ ptr_bin_node Find(ptr_bin_node bst, ElemType data, ptr_bin_node *stack, unsigned
 void In_Traversal(ptr_bin_node bst);
 
 unsigned int compare(ptr_bin_node bst, ElemType data);
+
+ElemType Get_Min_V(ptr_bin_node bst);
+
+ptr_bin_node Del_Node(ptr_bin_node bst, ElemType data);

@@ -109,3 +109,53 @@ unsigned int compare(ptr_bin_node bst, ElemType data) {
     }
 }
 
+/* 获取给定bst中的最小节点的值 */
+ElemType Get_Min_V(ptr_bin_node bst) {
+    while(bst->left != NULL) {
+        bst = bst->left;
+    }
+
+    return bst->data;
+}
+
+/* 从搜索二叉树中删除一个给定值节点
+ * 分两种情况：
+ *   1. 如果被删除的节点是叶子节点，直接删除即可
+ *   2. 如果被删除的节点不是叶子节点，就将其转换成对叶子节点的删除，还有就是如果这个非叶子节点拥有一个节点、两个节点的处理情况是不同的
+ *
+ *   针对2，如果一个非叶子节点拥有一个节点，直接将节点释放，并把它的子节点传递给释放掉的姐弟啊你的父节点即可
+ *          如果一个非叶子节点拥有两个节点，那就从其右子树中找到最小值的节点，用它替换掉被删除的节点值，然后删除这个最小节点就好了
+ *
+ *   递归方法
+ */
+ptr_bin_node Del_Node(ptr_bin_node bst, ElemType data) {
+    if( bst == NULL ) {
+        return NULL;
+    }
+
+    if( data < bst->data ) {
+        bst->left = Del_Node(bst->left, data);
+    }else if( data > bst->data ) {
+        bst->right = Del_Node(bst->right, data);
+    }else{
+        /* same as data */
+        ptr_bin_node temp = NULL;
+        //if only one child
+        if( bst->left == NULL ) {
+            temp = bst->right;
+            free(bst);
+            return temp;
+        }
+        if( bst->right == NULL ) {
+            temp = bst->left;
+            free(bst);
+            return temp;
+        }
+        //if two child
+        ElemType min_data = Get_Min_V(bst->right);
+        bst->data = min_data;
+        bst->right = Del_Node(bst->right, min_data);
+    }
+
+    return bst;
+}

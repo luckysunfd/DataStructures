@@ -8,3 +8,6 @@ arraylist/.vscode/c_cpp_properties.json
 arraylist/.vscode/launch.json
 arraylist/.vscode/readme.rtf
 arraylist/.vscode/tasks.json
+*.json
+*.rtf
+hash_table/bin/main

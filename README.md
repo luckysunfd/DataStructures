@@ -13,6 +13,10 @@
    3. 2-3tree
    4. 2-3-4tree
    5. trie 
+   6. rb-tree
+   7. b-tree
+   8. b+tree
+   9. segment-tree
    
 ## 图
 

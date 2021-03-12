@@ -1,86 +1,77 @@
-/* 链式队列实现文件 */
+/**
+ * @author      : sun (lingganyang@gmail.com)
+ * @file        : linked_queue
+ * @created     : Saturday Dec 01, 2018 23:02:49 CST
+ */
 
 #include "linked_queue.h"
 
 
-
-
-//初始化
-void init(LinkedQueuePtr lq1){
-        lq1->cnt = 0;
+void init_linked_queue(LinkedQueuePtr lq1){
         lq1->front = NULL;
-        lq1->rear = NULL;
+        lq1->rear  = NULL;
+        lq1->length = 0;
 }
 
-//判空
-bool is_Empty(LinkedQueuePtr lq1){
-        if(lq1 == NULL || lq1->cnt == 0){
+bool is_empty(LinkedQueuePtr lq1){
+        if(lq1->front == NULL && lq1->rear == NULL){
                 return true;
         }else{
                 return false;
         }
 }
 
-//求队列长度
-int get_length(LinkedQueuePtr lq1){
-        if(is_Empty(lq1)){
-                return 0;
-        }else{
-                return lq1->cnt;
-        }
+int get_length_linked_queue(LinkedQueuePtr lq1){
+        return lq1->length;
 }
 
-//
 LinkedQueueNodePtr create_node(DataType data){
         LinkedQueueNodePtr node = (LinkedQueueNodePtr)malloc(sizeof(LinkedQueueNode));
         if(node == NULL){
-                puts("Memory allocation failed");
+                puts("Memory allocation error");
                 return NULL;
         }else{
                 node->data = data;
                 node->next = NULL;
-
-                return node;
         }
+        return node;
 }
 
-//进队
 void enter_queue(LinkedQueuePtr lq1, DataType data){
-        if(lq1 == NULL){
-                puts("循环队列未初始化，暂不支持入队操作");
+        LinkedQueueNodePtr node = create_node(data);
+        if(node == NULL){
+                puts("因创建节点失败导致入队失败");
                 return ;
+        }
+
+        if(lq1->front == NULL){
+                lq1->front = node;
+                lq1->rear  = node;
+                lq1->length++;
         }else{
-                LinkedQueueNodePtr node = create_node(data);
-                if(node == NULL){
-                        puts("Memory allocation failed");
-                        return ;
-                }
-                if(lq1->front == NULL){
-                        lq1->front = node;
-                        lq1->rear = node;
-                        lq1->cnt++;
-                }else{
-                        lq1->rear->next = node;
-                        lq1->rear = node;
-                        lq1->cnt++;
-                }
+                lq1->rear->next = node;
+                lq1->rear = node;
+                lq1->length++;
         }
 }
 
-//出队
 DataType delete_queue(LinkedQueuePtr lq1){
-        if(is_Empty(lq1)){
-                puts("Empty queue");
-                return 0;
+        LinkedQueueNodePtr temp = lq1->front->next;  // store next node
+        
+        if(temp == NULL){
+                DataType return_data = lq1->front->data;
+                free(lq1->front);
+                lq1->front = NULL;
+                lq1->rear  = NULL;
+                lq1->length--;
+
+                return return_data;
         }else{
-                LinkedQueueNodePtr temp = lq1->front->next;
-                DataType d = lq1->front->data;
+                DataType return_data = lq1->front->data;
                 free(lq1->front);
                 lq1->front = temp;
-                lq1->cnt--;
-                if(lq1->front == NULL)
-                        lq1->rear = NULL;
+                lq1->length--;
 
-                return d;
+                return return_data;
         }
 }

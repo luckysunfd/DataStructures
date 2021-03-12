@@ -1,16 +1,15 @@
-target_app = bin/seq_queue_demo1
+target_app = seq_queue_demo
 cc = gcc
-flags = -std=c99 -Wall -v
 deps = seq_queue.h
-objs = main.o seq_queue.o 
+flags = -std=c99 -Wall -v
+objs = seq_queue.o main.o
 
 
 $(target_app): $(objs)
-	$(cc) -o $(target_app) $(objs) $(flags)
+	$(cc) -o $(target_app) $(objs) $(flags) 
 
-main.o: main.c $(deps)
-	$(cc) -c main.c $(deps)
-
-seq_queue.o: seq_queue.c $(deps)
+seq_queue.o: $(deps) seq_queue.c 
 	$(cc) -c seq_queue.c $(deps)
 
+main.o: $(deps) main.c 
+	$(cc) -c main.c $(deps) 

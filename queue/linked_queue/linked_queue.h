@@ -1,42 +1,40 @@
-/*
- * 循环队列 -- 链式存储
- * 套用循环单链表就可以
- * 
-*/
+/**
+ * @author      : sun (lingganyang@gmail.com)
+ * @file        : linked_queue
+ * @created     : Saturday Dec 01, 2018 22:47:09 CST
+ */
+
+#ifndef LINKED_QUEUE_H
+
+#define LINKED_QUEUE_H
+
 #include <stdio.h>
 #include <stdlib.h>
 #include <stddef.h>
-#include <string.h>
 #include <stdbool.h>
-
+#include <string.h>
 
 typedef int DataType;
 
-//链式队列单节点
 typedef struct LinkedQueueNode{
         DataType data;
         struct LinkedQueueNode *next;
 }LinkedQueueNode, *LinkedQueueNodePtr;
 
-//链式循环队列
 typedef struct LinkedQueue{
-        int cnt;    //队列长度
-        LinkedQueueNodePtr front;   //队头指针 -- 头出 
-        LinkedQueueNodePtr rear;    //队尾指针 -- 尾进 --尾插法插入
-}LinkedQueue, *LinkedQueuePtr;
+        LinkedQueueNodePtr front;
+        LinkedQueueNodePtr rear;
+        int length;
+}LinkedQueue, *LinkedQueuePtr; 
 
 
-//初始化
-void init(LinkedQueuePtr lq1);
-//判空
-bool is_Empty(LinkedQueuePtr lq1);
-//求队列长度
-//创建节点
-LinkedQueueNodePtr create_node(DataType data);
-int get_length(LinkedQueuePtr lq1);
-//进队
-void enter_queue(LinkedQueuePtr lq1, DataType data);
-//出队
-DataType delete_queue(LinkedQueuePtr lq1);
+void init_linked_queue(LinkedQueuePtr lq1);   //初始化
+bool is_empty(LinkedQueuePtr lq1);          //判断是否为空
+int get_length_linked_queue(LinkedQueuePtr lq1);     //获取队列长度
+LinkedQueueNodePtr create_node(DataType data);   //生成一个队列节点
+void enter_queue(LinkedQueuePtr lq1, DataType data);          //进队
+DataType delete_queue(LinkedQueuePtr lq1);     //出队
 
+
+#endif /* end of include guard LINKED_QUEUE_H */
 

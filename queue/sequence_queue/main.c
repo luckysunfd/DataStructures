@@ -1,32 +1,27 @@
 #include "seq_queue.h"
 
 
-
-
 int main(void){
-        SeqQueuePtr queue = (SeqQueuePtr)malloc(sizeof(SeqQueue));
-        if(queue == NULL){
-                puts("内存分配错误");
-                exit(-1);
-        }
+        SeqQueuePtr sq1 = (SeqQueuePtr)malloc(sizeof(SeqQueue));
+        if(sq1 == NULL){
+                puts("Memory allocation error");
+                return 1;
+        } 
 
-        puts("initial >>");
-        init(queue, MAXSIZE);
+        puts("Initial queue");
+        init_seq_queue(sq1, MAXSIZE);
 
-        puts("入队 >>");
+        puts("enter queue");
         for(int i = 0; i < MAXSIZE; i++){
-                enter_queue(queue, i);
+                enter_seq_queue(sq1, i);
         }
 
-        puts("此时的队列长度");
-        printf("%d\n", get_cnt(queue));
-
-        puts("出队 >>");
-        printf("%d\n", del_queue(queue));
-        printf("%d\n", del_queue(queue));
-        printf("%d\n", del_queue(queue));
-
-        printf("此时的队列长度 %d\n", get_cnt(queue));
+        puts("delete queue");
+        printf("%d\n", delete_seq_queue(sq1));
+        printf("%d\n", delete_seq_queue(sq1));
+        printf("%d\n", delete_seq_queue(sq1));
+        printf("%d\n", delete_seq_queue(sq1));
+        printf("%d\n", delete_seq_queue(sq1));
 
         return 0;
 }
